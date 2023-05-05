@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bán Bánh ngọt Trực Tuyến</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/data.js"></script>
+	<script src="../js/huy.js"> </script>
+	<script src="../js/all.min.js"></script>
+	<script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/code.css">
+    <link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/content.css">
+
+    <script>
+        function setMasp(masp) {
+            localStorage.setItem("masp", masp)
+        }
+
+
+        document.getElementById("Save").addEventListener("click", function() {
+    var name = document.getElementById("Name").value;
+    var email = document.getElementById("Em").value;
+    var birthday = document.getElementById("NS").value;
+    var phone = document.getElementById("SDT").value;
+    var password = document.getElementById("MK").value;
+    var confirmPassword = document.getElementById("NLMK").value;
+    var gender = document.querySelector('input[name="gioitinh"]:checked').value;
+    var address = document.getElementById("DC").value;
+
+    // Lưu thông tin vào đối tượng JSON
+    var data = {
+        name: name,
+        email: email,
+        birthday: birthday,
+        phone: phone,
+        password: password,
+        confirmPassword: confirmPassword,
+        gender: gender,
+        address: address
+    };
+
+    // Gửi yêu cầu POST đến server sử dụng AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/api/save-info", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert(xhr.responseText);
+        }
+    };
+    xhr.send(JSON.stringify(data));
+});
+    </script>
+    <style>
+        .nav-link.no-dot::before {
+            content: none;
+        }
+    </style>
+    <style>
+        .nav-link.no-dot::before {
+            content: none;
+        }
+
+        .chiase {
+        font-size: 1.2rem;
+        color: #333;
+        }
+
+        .icon {
+        margin: 0 10px;
+        }
+       
+    </style>
+    <script>
+        function showCart() {
+            var cart = document.getElementById("cart");
+            cart.style.display = "block";
+        }
+    
+        function hideCart() {
+            var cart = document.getElementById("cart");
+            cart.style.display = "none";
+        }
+    </script>
+    
+    <style>
+        #cart {
+            display: none; /* Bắt đầu ẩn */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+    
+        .cart-content {
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            background-color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="img-nav">
+                    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #CCFFCC;">
+                        <a class="navbar-brand" href="index.html"><img src="../img/nền/logo..jpg" alt=""></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active" id="trangchu">
+                                    <a class="nav-link" href="../html/index.html">Trang Chủ<span class="sr-only"></span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../html/thongtin.html">Thông Tin</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../html/chitiet.html" style="text-decoration:none;">Giỏ hàng</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#lienhe">Liên hệ</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Sản Phẩm
+                                    </a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#cheese">BÁNH CHEESE</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#kem">BÁNH KEM HÀN QUỐC</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#xukem">BÁNH XU KEM</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#macaron">BÁNH MACARON</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm tại đây" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit"><i
+                                        class="fas fa-search"></i>Search</button>
+                            </form>
+                            <div>
+                                
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item" id="btndangky">
+                                        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Đăng ký / Đăng nhập</a>
+                                    </li> 
+                                    <li class="nav-item">
+                                        <a class="nav-link my-2" href="#"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </nav>
+        </header>
+
+        <div class="content">
+            <div class="bd-example">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../img/nền/cheese.jpg" class="d-block w-100" alt="..." style="max-width: 100pxpx; max-height: 400px;">
+                            <div class="carousel-caption d-none d-md-block">
+                            
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../img/nền/kem.jpg" class="d-block w-100" alt="..." style="max-width: 100pxpx; max-height: 400px; ">
+                            <div class="carousel-caption d-none d-md-block">
+                               
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../img/nền/xu kem.jpg" class="d-block w-100" alt="..." style="max-width: 100pxpx; max-height: 400px; ">
+                            <div class="carousel-caption d-none d-md-block">
+                                
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../img/nền/macaron.jpg" class="d-block w-100" alt="..." style="max-width: 100pxpx; max-height: 400px; ">
+                            <div class="carousel-caption d-none d-md-block">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+                <h1 style="text-align: center; color: #9d5707;">CÁC LOẠI BÁNH HOT NHẤT 2023</h1>
+            <div class="container" style="background-color: var(--secondary-color);">
+                <h3 id="cheese" class="text-center mt-sm-4">BÁNH CHEESE</h3>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(1)">
+                                    <img class="pic-1" src="../img/cheese/che 1.jpg">
+                                    <img class="pic-2" src="../img/cheese/che 2.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="../html/chi tiết sp.html" onclick="setMasp(1)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh phô mai việt quất<br> </a></h3>
+                                <div class="price">₫200.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(2)">
+                                    <img class="pic-1" src="../img/cheese/che 2.jpg">
+                                    <img class="pic-2" src="../img/cheese/che 3.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="../html/chi tiết sp.html" onclick="setMasp(2)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh cream cheese mềm mịn<br></a></h3>
+                                <br>
+                                <div class="price">₫250.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(3)">
+                                    <img class="pic-1" src="../img/cheese/che 3.jpg">
+                                    <img class="pic-2" src="../img/cheese/che 4.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(3)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh cream cheese dâu</h3>
+                                    <br>
+                                    <br>
+                                    
+                                <div class="price">₫75.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(4)">
+                                    <img class="pic-1" src="../img/cheese/che 4.jpg">
+                                    <img class="pic-2" src="../img/cheese/che 5.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(4)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a> <br><br>Bánh cream cheese việt quất</h3>
+                                    <br>
+                                    <br>
+                                    
+                                <div class="price">₫75.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(5)">
+                                    <img class="pic-1" src="../img/cheese/che 5.jpg">
+                                    <img class="pic-2" src="../img/cheese/ch 6.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(5)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh cream cheese trái cây</h3><br><br><br>   
+                                <div class="price">₫75.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(6)">
+                                    <img class="pic-1" src="../img/cheese/ch 6.jpg">
+                                    <img class="pic-2" src="../img/cheese/che 7.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(6)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh cream cheese socola  mịn</h3><br><br><br>
+                                <div class="price">₫80.500</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(7)">
+                                    <img class="pic-1" src="../img/cheese/che 7.jpg">
+                                    <img class="pic-2" src="../img/cheese/che 8.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(7)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh cream cheese vị chanh mịn</h3>
+                                <div class="price">₫85.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(8)">
+                                    <img class="pic-1" src="../img/cheese/che 8.jpg">
+                                    <img class="pic-2" src="../img/cheese/che 1.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(8)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh cream cheese chanh</h3><br><br><br>
+                                <div class="price">₫250.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="background-color: var(--secondary-color);">
+                <h3 id="kem" class="text-center mt-sm-4">BÁNH KEM HÀN QUỐC</h3>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(9)">
+                                    <img class="pic-1" src="../img/kem/kem 1.jpg">
+                                    <img class="pic-2" src="../img/kem/kem 2.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(9)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh kem gấu happy</a></h3><br><br>
+                                <div class="price">₫125.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(10)">
+                                    <img class="pic-1" src="../img/kem/kem 2.jpg">
+                                    <img class="pic-2" src="../img/kem/kem 3.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(10)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh kem tym 7 mày</a></h3><br>
+                                <div class="price">₫240.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(11)">
+                                    <img class="pic-1" src="../img/kem/kem 3.jpg">
+                                    <img class="pic-2" src="../img/kem/kem 4.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(11)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh kem trái cây </h3><br>
+                                <div class="price">₫175.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(12)">
+                                    <img class="pic-1" src="../img/kem/kem 4.jpg">
+                                    <img class="pic-2" src="../img/kem/kem 5.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(12)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh kem sinh nhật hình gấu</h3><br><br>
+                                <div class="price">₫225.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(5)">
+                                    <img class="pic-1" src="../img/kem/kem 5.jpg">
+                                    <img class="pic-2" src="../img/kem/kem 6.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(5)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh kem hàn quốc hồng</h3>
+                                <div class="price">₫210.950</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(6)">
+                                    <img class="pic-1" src="../img/kem/kem 6.jpg">
+                                    <img class="pic-2" src="../img/kem/kem 7.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(6)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh kem hàn quốc xanh</h3><br><br>
+                                <div class="price">₫226.550</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(7)">
+                                    <img class="pic-1" src="../img/kem/kem 7.jpg">
+                                    <img class="pic-2" src="../img/kem/kem 8.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(7)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh kem sinh nhật </h3>
+                                <div class="price">₫126.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(12)">
+                                    <img class="pic-1" src="../img/kem/kem 8.jpg">
+                                    <img class="pic-2" src="../img/kem/kem 1.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(12)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh kem hoa hồng</h3><br><br><br><br>
+                                <div class="price">₫200.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="background-color: var(--secondary-color);">
+                <h3 id="xukem" class="text-center mt-sm-4">BÁNH XU KEM</h3>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(14)">
+                                    <img class="pic-1" src="../img/xu kem/xu kem 1.jpg">
+                                    <img class="pic-2" src="../img/xu kem/xu kem 2.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(14)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh xu kem phô mai</a></h3>
+                                <div class="price">₫20.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(13)">
+                                    <img class="pic-1" src="../img/xu kem/xu kem 2.jpg">
+                                    <img class="pic-2" src="../img/xu kem/xu kem 3.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(13)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh xu kem phô mai dâu</a></h3><br><br><br><br><br>  <br><br>
+                                <div class="price">₫28.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(17)">
+                                    <img class="pic-1" src="../img/xu kem/xu kem 3.jpg">
+                                    <img class="pic-2" src="../img/xu kem/xu kem 4.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(17)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh xu kem phô mai đường</h3><br> <br><br><br>
+                                <div class="price">₫21.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(14)">
+                                    <img class="pic-1" src="../img/xu kem/xu kem 4.jpg">
+                                    <img class="pic-2" src="../img/xu kem/xu kem 5.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(14)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh xu kem phô mai topping</h3><br><br>
+                                <div class="price">₫39.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(16)">
+                                    <img class="pic-1" src="../img/xu kem/xu kem 5.jpg">
+                                    <img class="pic-2" src="../img/xu kem/xu kem 6.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(16)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh xu kem phô mai chiên</h3>
+                                <div class="price">₫26.950</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(17)">
+                                    <img class="pic-1" src="../img/xu kem/xu kem 6.jpg">
+                                    <img class="pic-2" src="../img/xu kem/xu kem 7.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(17)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh xu kem phô mai</h3><br><br>
+                                <div class="price">₫22.550</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(18)">
+                                    <img class="pic-1" src="../img/xu kem/xu kem 7.jpg">
+                                    <img class="pic-2" src="../img/xu kem/xu kem 8.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(18)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh xu kem socola</h3>
+                                <div class="price">₫30.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(15)">
+                                    <img class="pic-1" src="../img/xu kem/xu kem 8.jpg">
+                                    <img class="pic-2" src="../img/xu kem/xu kem 1.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(15)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh xu kem phô mai socola</h3>
+                                <div class="price">₫25.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="background-color: var(--secondary-color);">
+                <h3 id="macaron" class="text-center mt-sm-4">BÁNH MACARON</h3>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(20)">
+                                    <img class="pic-1" src="../img/Mâcron/Macaron 1.jpg">
+                                    <img class="pic-2" src="../img/Mâcron/Macaron 2.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(20)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Hộp bánh macaron</a></h3>
+                                <div class="price">₫186.000 </div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(21)">
+                                    <img class="pic-1" src="../img/Mâcron/Macaron 2.jpg">
+                                    <img class="pic-2" src="../img/Mâcron/Macaron 3.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(21)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh macaron 2 tầng dâu</a></h3><br><br>
+                                <div class="price">₫109.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(22)">
+                                    <img class="pic-1" src="../img/Mâcron/Macaron 3.jpg">
+                                    <img class="pic-2" src="../img/Mâcron/Macaron 4.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(22)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title">
+                                    <a href="#"></a>Bánh macaron dâu</h3> <br><br>
+                                <div class="price">₫43.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star disable"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(21)">
+                                    <img class="pic-1" src="../img/Mâcron/Macaron 4.jpg">
+                                    <img class="pic-2" src="../img/Mâcron/Macaron 5.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(21)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh sinh nhật macaron</a></h3><br><br>
+                                <div class="price">₫160.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(21)">
+                                    <img class="pic-1" src="../img/Mâcron/Macaron 5.jpg">
+                                    <img class="pic-2" src="../img/Mâcron/Macaron 6.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(21)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh macaron mini</a></h3><br><br>
+                                <div class="price">₫19.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(21)">
+                                    <img class="pic-1" src="../img/Mâcron/Macaron 6.jpg">
+                                    <img class="pic-2" src="../img/Mâcron/Macaron 7.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(21)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Macaron thượng hạng</a></h3><br><br>
+                                <div class="price">₫109.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(21)">
+                                    <img class="pic-1" src="../img/Mâcron/Macaron 7.jpg">
+                                    <img class="pic-2" src="../img/Mâcron/Macaron 8.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(21)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh macaron sinh nhật</a></h3><br><br>
+                                <div class="price">₫199.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product-grid3">
+                            <div class="product-image3">
+                                <a href="../html/chitiet.html" style="text-decoration:none;" onclick="setMasp(21)">
+                                    <img class="pic-1" src="../img/Mâcron/Macaron 8.jpg">
+                                    <img class="pic-2" src="../img/Mâcron/Macaron 1.jpg">
+                                </a>
+                                <ul class="social">
+                                    <li><a href="chitietsanpham.html" onclick="setMasp(21)"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                                <span class="product-new-label">New</span>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#">Bánh sinh nhật macaron mini</a></h3><br><br>
+                                <div class="price">₫109.000</div>
+                                <ul class="rating">
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                    <li class="fa fa-star"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="dangki" id="dangki">
+            <table class="table table-active table-striped table-hover table-bordered" role="table" id="danhSach">
+                <h4 class="e color mt-lg-4" style="text-align: center;">DANH SÁCH THÔNG TIN ĐĂNG KÝ TÀI KHOẢN</h4>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Ngày sinh</th>
+                        <th>Giới tính</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
+                        <th>Mật khẩu</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="text-center text-lg-start bg-light text-muted mt-lg-3">
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block" id="lienhe">
+                    <span>Tận hưởng cùng chúng tôi</span>
+                </div>
+                <!-- Left -->
+
+                <!-- Right -->
+                <div>
+                    <a href="" class="icon-network me-4 mr-sm-2 text-reset">
+                        <i class="icon-social fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="icon-network me-4 mr-sm-2 text-reset">
+                        <i class="icon-social fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="icon-network me-4 mr-sm-2 text-reset">
+                        <i class="icon-social fab fa-google"></i>
+                    </a>
+                    <a href="" class="icon-network me-4 mr-sm-2 text-reset">
+                        <i class="icon-social fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="icon-network me-4 mr-sm-2 text-reset">
+                        <i class="icon-social fab fa-linkedin"></i>
+                    </a>
+                    <a href="" class="icon-network me-4 mr-sm-2 text-reset">
+                        <i class="icon-social fab fa-github"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <i class="fas fa-gem me-3"></i>SHOP BÁNH KẸO
+                            </h6>
+                            <p>
+                                Bánh ngọt có một hương vị dễ chịu, đặc biệt là một liên quan đến cảm giác vị giác cơ bản gây ra bởi đường trong khi bánh kẹo có liên quan đến, hoặc về bản chất của bánh kẹo hoặc sản xuất của họ.
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                SẢN PHẨM
+                            </h6>
+                            <p>
+                                <a href="#cheese" class="inf-usefull text-reset">Cheese</a>
+                            </p>
+                            <p>
+                                <a href="#kem" class="inf-usefull text-reset">Bánh kem hàn quốc</a>
+                            </p>
+                            <p>
+                                <a href="#xukem" class="inf-usefull text-reset">Bánh xu kem</a>
+                            </p>
+                            <p>
+                                <a href="#macaron" class="inf-usefull text-reset">Bánh macaron</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                LIÊN KẾT
+                            </h6>
+                            <p>
+                                <a href="#trangchu" class="inf-usefull text-reset">Trang chủ</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="inf-usefull text-reset">Cài đặt</a>
+                            </p>
+                            <p>
+                                <a href="../html/thongtin.html" class="inf-usefull text-reset">Chủ shop</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="inf-usefull text-reset">Help</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Contact
+                            </h6>
+                            <p><i class="fas fa-home me-3"></i>HCM - 12 Nguyễn Văn Bảo - Quận Gò Vấp</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i> nguyenquochuypy84@gmail.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i> 0336248047</p>
+                            <p><i class="fas fa-print me-3"></i> 0337554507</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                ©
+                <script>
+                    document.write(new Date().getFullYear());
+                </script> Shop Bánh Kẹo
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </div>
+    <div class="modal fade" role="dialog" id="myModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="margin-top: 10px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="text-left"> ĐĂNG NHẬP</h2>
+                    <button onclick="showCa1()" type="button" class="close" aria-label="Close" data-dismiss="modal" style="color: red; outline: none;">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form role="form" class="form-horizontal" style="margin-left: 10px;">
+
+                        <input type="email" id="emailDN" class="form-control" placeholder="Nhập email của bạn..">
+                        <span class="text-danger" id="tbemailDN">*</span><br>
+
+                        <input type="password" id="MKDN" class="form-control" placeholder="Nhập mật khẩu của bạn">
+                        <span class="text-danger" id="tbMKDN">*</span>
+                        <div class="row">
+                            <div class="col-md-6" style="padding-top: .35rem">
+                                <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" name="remember" type="checkbox" >
+                                        <span style="padding-bottom: 15px">Nhớ mật khẩu </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-info btn-block" id="btndangnhap" style="color: black; text-decoration: none;">Đăng nhập</button>
+                    </form>
+                    
+                    <div class="text-center text-muted my-sm-2">Hoặc tiếp tục bằng</div>
+                    <div class="d-flex justify-content-center social-buttons">
+                        <div class="icon">
+                            <a href="#/">
+                                <img src="../img/nền/fb.png" width="35px" height="35px" alt="facebook">
+                            </a>
+                        </div>
+                        <div class="icon">
+                            <a href="#/">
+                                <img src="../img/nền/zalo.png" width="35px" height="35px" alt="facebook">
+                            </a>
+                        </div>
+                        <div class="icon">
+                            <a href="#/">
+                                <img src="../img/nền/integam.jpg" width="35px" height="35px" alt="facebook">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer justify-content-center">
+                    <div class="dangky">Nếu bạn chưa có tài khoản? 
+                        <span style="cursor: pointer;" > 
+                            <a class="nav-link no-dot" href="#" data-toggle="modal fake" data-target="#myModal1" id="btntao" style="text-align: center;">Đăng ký </a>
+                        </span>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ca1" class="modal">
+        <div class="car1">
+            <h2>Thông báo</h2>
+            <p>Bạn đã thêm sản phẩm vào giỏ hàng thành công</p>
+            <button onclick="hideCart()">Đóng</button>
+        </div>
+        </div>
+
+    <div class="modal fade" role="dialog" id="myModal1" aria-hidden="true">
+        <div class="modal-lg modal-dialog modal-dialog-centered" style="margin-top: 10px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="text-left" style="text-align: center;">THÔNG TIN CÁ NHÂN</h2>
+                    <button type="button" class="close" data-dismiss="modal" style="color: red; outline: none;">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form role="form" class="form-horizontal" style="margin-top: 10px;">
+                        <div class="row">                           
+                            <div class="col-md-6">
+                                <label for="ten" class="control-label col-md-6">Họ Tên</label>
+                                <input type="text" id="Name" class="form-control" placeholder="Nhập họ tên" required>
+                                <span class="text-danger" id="tbName">*</span>
+                            </div>
+                            <div class="col-md-6" style="margin-bottom: 10px;">
+                                <label for="email" class="control-label col-md-6">Email</label>
+                                <input type="email" id="Em" class="form-control" placeholder="Nhập email" value="quochuy123@gmail.com" required>
+                                <span class="text-danger" id="tbEM">*</span>
+                            </div>
+                        </div>                
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="NS" class="control-label col-md-6">Ngày sinh</label>
+                                <input type="date" id="NS" class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="sdt" class="control-label col-md-6">Số điện thoại</label>
+                                <input type="text" id="SDT" class="form-control" placeholder="Nhập số điện thoại">
+                                <span class="text-danger" id="errorSDT"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="MK" class="control-label col-md-6">Mật khẩu</label>
+                            <div class="col-md-12">
+                                <input type="password" id="MK" class="form-control" placeholder="Nhập mật khẩu">
+                                <span class="text-danger" id="tbMK">*</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="NLMK" class="control-label col-md-6">Nhập lại mật khẩu</label>
+                            <div class="col-md-12">
+                                <input type="password" id="NLMK" class="form-control" placeholder="Nhập lại mật khẩu">
+                                <span class="text-danger" id="tbNLMK">*</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="GT" class="control-label col-md-3 mt-sm-2">Giới tính</label>
+                            <div class="form-check-inline">
+                                <label class="form-check-label" for="radnam">
+                                    <input type="radio" class="form-check-input" id="radnam" name="gioitinh">Nam
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label" for="radnu">
+                                    <input type="radio" class="form-check-input" id="radnu" name="gioitinh">Nữ
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label for="DC" class="control-label col-md-3">Địa chỉ</label>
+                            <div class="col-md-12">
+                                <input type="text" id="DC" class="form-control" placeholder="Nhập địa chỉ">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sucess btn-group-justified" id="Save" type="button" style="color: white; background-color: green;width: 100%;" onclick="showCart()">
+                        <a href="#btndangnhap">ĐĂNG KÝ</a>    
+                    </button>
+                </div>
+                <div id="cart" class="modal">
+                    <div class="cart-content">
+                        <h2>Thông báo</h2>
+                        <p>Bạn đã đăng ký thành công</p>
+                        <button onclick="hideCart()">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="backtotop">
+        <i class="fa fa-arrow-circle-up"></i>
+        <script>
+            $(document).ready(function() {
+                $(window).scroll(function() {
+                    if ($(this).scrollTop()) {
+                        $('#backtotop').fadeIn()
+                    } else {
+                        $('#backtotop').fadeOut()
+                    }
+                })
+                $('#backtotop').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 750)
+                })
+            })
+        </script>
+    </div>
+</body>
+
+</html>

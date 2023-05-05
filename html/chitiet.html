@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bán Bánh Kẹo Trực Tuyến</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="../js/all.min.js"></script>
+    <script src="../js/data.js"></script>
+	<script src="../js/huy.js"> </script>
+	<script src="../js/all.min.js"></script>
+	<script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/code.css">
+    <link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/content.css">
+
+    <script>
+        function setMasp(masp) {
+            localStorage.setItem("masp", masp)
+        }
+
+
+        document.getElementById("Save").addEventListener("click", function() {
+    var name = document.getElementById("Name").value;
+    var email = document.getElementById("Em").value;
+    var birthday = document.getElementById("NS").value;
+    var phone = document.getElementById("SDT").value;
+    var password = document.getElementById("MK").value;
+    var confirmPassword = document.getElementById("NLMK").value;
+    var gender = document.querySelector('input[name="gioitinh"]:checked').value;
+    var address = document.getElementById("DC").value;
+
+    // Lưu thông tin vào đối tượng JSON
+    var data = {
+        name: name,
+        email: email,
+        birthday: birthday,
+        phone: phone,
+        password: password,
+        confirmPassword: confirmPassword,
+        gender: gender,
+        address: address
+    };
+
+    // Gửi yêu cầu POST đến server sử dụng AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/api/save-info", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert(xhr.responseText);
+        }
+    };
+    xhr.send(JSON.stringify(data));
+    });
+
+    document.getElementById("price").setAttribute("value", "175000");
+
+
+    </script>
+
+<script>
+    function tinhTong() {
+      // Lấy giá trị từ các phần tử input
+      var quantity = document.getElementById("quantity").value;
+      var price = document.getElementById("price").value;
+
+      // Chuyển đổi giá trị sang kiểu số
+      quantity = parseInt(quantity);
+      price = parseFloat(price);
+
+      // Tính toán tổng sản phẩm
+      var total = quantity * price;
+
+      // Hiển thị kết quả trên màn hình
+      document.getElementById("total").innerHTML = "Tổng sản phẩm: " + total;
+    }
+  </script>
+
+    <script>
+        function calculateTotal() {
+        var quantity = parseInt(document.getElementById('quantity').value);
+        var price = parseInt(document.getElementById('price').value);
+        var total = quantity * price;
+        document.getElementById('total').value = total;
+        }
+    </script>
+
+<script>
+    function showCart() {
+        var cart = document.getElementById("cart");
+        cart.style.display = "block";
+    }
+
+    function hideCart() {
+        var cart = document.getElementById("cart");
+        cart.style.display = "none";
+    }
+</script>
+
+<style>
+    #cart {
+        display: none; /* Bắt đầu ẩn */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .cart-content {
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        background-color: #fff;
+        text-align: center;
+    }
+</style>
+
+    <style>
+        .nav-link.no-dot::before {
+            content: none;
+        }
+
+        .chiase {
+        font-size: 1.2rem;
+        color: #333;
+        }
+
+        .icon {
+        margin: 0 10px;
+        }
+        .anh{
+            text-indent: 200px;
+        }
+        .header {
+            position: relative;
+        }
+        .header img {
+            position: absolute;
+            
+            margin-left: 70px;
+            margin-top: -360px;
+        }
+        .motasanpham{
+            margin-left: 100px;
+            margin-top: 50px;
+        }
+        h3 {
+            color: darkred;
+        }
+        h4 {
+            color: yellow;
+        }
+        a{
+            color: red;
+        }
+        
+
+
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="img-nav">
+                    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #CCFFCC;">
+                        <a class="navbar-brand" href="index.html"><img src="../img/banner/logo..jpg" alt=""></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="../html/index.html">Trang Chủ<span class="sr-only"></span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../html/thongtin.html">Thông Tin</a> 
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../html/chitiet.html">Giỏ hàng</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#lienhe">Liên hệ</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Sản Phẩm
+                                    </a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#cheese">BÁNH CHEESE</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#kem">BÁNH KEM HÀN QUỐC</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#xukem">BÁNH XU KEM</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#macaron">BÁNH MACARON</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm tại đây" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit"><i
+                                        class="fas fa-search"></i>Search</button>
+                            </form>
+                            <div>
+                                
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item" id="btndangky">
+                                        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Đăng ký / Đăng nhập</a>
+                                    </li> 
+                                    <li class="nav-item">
+                                        <a class="nav-link my-2" href="#"><i
+                                            class="fa fa-shopping-cart"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </nav>
+        </header>
+
+        <section class="chitietsanpham mt-lg-4">
+            <div class="container p-4" style="background-color: var(--secondary-color);">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="mb-sm-4">
+                            <div id="ha"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 border-left">
+                        <h3 id="tensp"><p><strong> Hàng</strong> 100% <strong>chất lượng</strong>, đảm bảo <strong>uy tín</strong>!</p></h3>
+                        <div class="dongia row">
+                            <label for="price">&nbsp;&nbsp;&nbsp;Đơn giá: &nbsp;&nbsp;&nbsp;</label>
+                            <input type="text" id="price" name="price" value="175000" readonly>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="soluong col-lg-4 col-md-4">
+                                <form action="action_page.php">
+                                    Số lượng: 
+                                    <input type="number" id="quantity" name="quantity" min="0" max="100" step="1" value="1">
+                                </form>   
+                            </div>
+                        </div>
+                        <div class="soluongcosan my-sm-3">
+                            <span id="soluong"></span><span> Sản phẩm có sẵn</span>
+                        </div> <br> 
+                        <button onclick="tinhTong()">Tổng tiền</button>
+                        <p id="total"></p>
+                        <br>
+                        <div class="action mt-lg-2" style="text-align: center;">
+                            <form class="form-inline my-2 my-lg-0">
+                                <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">
+                                    <i class="fas fa-search"></i> 
+                                    <a href="../html/index.html" class="inf-usefull text-reset"style="text-decoration: none; color: black">
+                                        MUA NGAY
+                                    </a>
+                                </button>
+                                <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit" onclick="showCart()">
+                                    <i class="fas fa-search"></i> 
+                                    <a href="#macaron" class="inf-usefull text-reset"> Thêm vào giỏ hàng
+                                    </a>
+                                </button>
+                            </form>
+                        </div> <br> <br>                       
+                            <div id="cart" class="modal">
+                            <div class="cart-content">
+                                <h2>Thông báo</h2>
+                                <p>Bạn đã thêm sản phẩm vào giỏ hàng thành công</p>
+                                <button onclick="hideCart()">Đóng</button>
+                            </div>
+                            </div>
+                        <div class="row align-items-center chiase mt-md-2">
+                            <span>&nbsp;&nbsp;&nbsp;Chia sẻ: &nbsp;&nbsp;&nbsp;</span> <br>
+                            <br>
+                            <div class="icon">
+                                <a href="#/">
+                                    <img src="../img/nền/fb.png" width="35px" height="35px" alt="facebook">
+                                </a>
+                            </div>
+                            <div class="icon">
+                                <a href="#/">
+                                    <img src="../img/nền/zalo.png" width="35px" height="35px" alt="facebook">
+                                </a>
+                            </div>
+                            <div class="icon">
+                                <a href="#/">
+                                    <img src="../img/nền/integam.jpg" width="35px" height="35px" alt="facebook">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header">
+                    <img src="../img/kem/kem 3.jpg" alt="tamhinh" width="380" height="350">
+                </div>  
+                <div class="col-lg-12">
+                    <div class="motasanpham">
+                        <h4 >Bánh kem trái cây vị socola</h4>
+                        <p id="mota">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-lg-start bg-light text-muted mt-lg-3">
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                    <span>Kết nối với chúng tôi trên mạng xã hội:</span>
+                    
+                </div>
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <i class="fas fa-gem me-3"></i>SHOP BÁNH KẸO
+                            </h6>
+                            <p>
+                                Bánh kẹo là ngọt có một hương vị dễ chịu, đặc biệt là một liên quan đến cảm giác vị giác cơ bản gây ra bởi đường trong khi bánh kẹo có liên quan đến, hoặc về bản chất của bánh kẹo hoặc sản xuất của họ.
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                SẢN PHẨM
+                            </h6>
+                            <p>
+                                <a href="#cheese" class="inf-usefull text-reset">Cheese</a>
+                            </p>
+                            <p>
+                                <a href="#kem" class="inf-usefull text-reset">Bánh kem hàn quốc</a>
+                            </p>
+                            <p>
+                                <a href="#xukem" class="inf-usefull text-reset">Bánh xu kem</a>
+                            </p>
+                            <p>
+                                <a href="#macaron" class="inf-usefull text-reset">Bánh macaron</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                LIÊN KẾT
+                            </h6>
+                            <p>
+                                <a href="#!" class="inf-usefull text-reset">Cài đặt</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="inf-usefull text-reset">Đơn hàng</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="inf-usefull text-reset">Help</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Contact
+                            </h6>
+                            <p><i class="fas fa-home me-3"></i>HCM - 12 Nguyễn Văn Bảo - Quận Gò Vấp</p>
+                            <p>
+                                <i class="fas fa-envelope me-3"></i> nguyenquochuypy84@gmail.com
+                            </p>
+                            <p><i class="fas fa-phone me-3"></i> 0336248047</p>
+                            <p><i class="fas fa-print me-3"></i> 0337554507</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    <div id="backtotop">
+        <i class="fa fa-arrow-circle-up"></i>
+        <script>
+            $(document).ready(function() {
+                $(window).scroll(function() {
+                    if ($(this).scrollTop()) {
+                        $('#backtotop').fadeIn()
+                    } else {
+                        $('#backtotop').fadeOut()
+                    }
+                })
+                $('#backtotop').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 750)
+                })
+            })
+        </script>
+    </div>
+    
+</body>
+
+</html>
